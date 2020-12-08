@@ -13,7 +13,7 @@
 
 此方案的处理方式是，点击时获取与该点位重合的所有点位，然后整合需要在气泡中展示的内容，添加切换功能，达到切换展示所有气泡信息的效果。
 
-## 用法：
+### 用法：
 
 第一步：初始化`popupListLayer` 
 
@@ -31,11 +31,9 @@
 
 此方案主要是借鉴在GIT上发现的`leaflet-tooltip-layout`这个插件。通过处理`L.tooltip()`位置关系，实现多气泡信息展示，同时尽可能避免气泡之间的遮盖。
 
-该方案支持通过点击点位展示气泡（见本文开头效果二）以及同时展示所有点位气泡（如下图效果）。
+该方案支持**通过点击点位展示气泡**以及**同时展示所有点位气泡**。
 
-![](https://blogimage.gisarmory.xyz/202011300101.png)
-
-
+### 用法：
 
 我们将该方法封装成插件，引用插件后，只需简单的两步即可实现上述效果。
 
@@ -61,9 +59,11 @@
 
 ## 示例：
 
-[点击显示气泡](http://gisarmory.xyz/blog/index.html?demo=LeafletTooltipLayout1)
+[PopupListLayer 切换显示气泡](http://gisarmory.xyz/blog/index.html?demo=LeafletOverlapMarkerPopup1)
 
-[常显示气泡](http://gisarmory.xyz/blog/index.html?demo=LeafletTooltipLayout2)
+[PopupLayoutLayer 显示所有气泡](http://gisarmory.xyz/blog/index.html?demo=LeafletOverlapMarkerPopup2)
+
+[PopupLayoutLayer 点击显示气泡](http://gisarmory.xyz/blog/index.html?demo=LeafletOverlapMarkerPopup3)
 
 
 
