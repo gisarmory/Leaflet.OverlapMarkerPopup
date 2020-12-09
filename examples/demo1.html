@@ -64,7 +64,7 @@
     function addMarker(x, y, j, k) {
         var marker = L.marker([y, x], {
             icon: iconsmall
-        }).addTo(map)
+        }).bindPopup('111111111111111111')
         var contentHTML = ` <div> <strong>共` + k + `个点</strong> <div>第` + (j + 1) + `个点</div> </div> `
         popupListLayer.addMarker(marker, contentHTML)
     }

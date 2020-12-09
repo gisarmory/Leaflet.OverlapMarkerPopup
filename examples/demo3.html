@@ -50,10 +50,21 @@
     });
 
     var popupLayoutLayer = new L.popupLayoutLayer().addTo(map)
+    // 点击事件
+    popupLayoutLayer.on('click', function(evt) {
+        console.log(evt)
+        var dataObj = evt.options.data
+        var contentHTML = ` <div> <strong>共` + dataObj.k + `个点</strong> <div>第` + (dataObj.j + 1) + `个点</div> </div> `
+        // 显示气泡
+        L.popup({
+            offset: [0, -10]
+            })
+            .setLatLng(evt.getLatLng())
+            .setContent(contentHTML)
+            .openOn(map)
+    })
 
-    // 添加点
-    addPoint()
-
+    addPoint() // 添加点
     function addPoint() {
         for (var i = 0; i < 10; i++) {
             var x = 115.390619 + (2 * Math.random());
@@ -67,9 +78,12 @@
 
     function addMarker(x, y, j, k) {
         var marker = L.marker([y, x], {
-            icon: iconsmall
-        }).addTo(map)
-        var contentHTML = ` <div> <strong>共` + k + `个点</strong> <div>第` + (j + 1) + `个点</div> </div> `
+            data: {
+                j: j,
+                k: k
+            }
+        })
+        var contentHTML = ` <div> <div>第` + (j + 1) + `个点</div> </div> `
         popupLayoutLayer.addMarker(marker, contentHTML)
     }
 </script>
