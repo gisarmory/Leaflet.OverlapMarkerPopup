@@ -23,7 +23,7 @@
 
 `popupListLayer.addMarker(marker, contentHTML)`
 
-![202012040101](https://blogimage.gisarmory.xyz/202012040101.png)
+![2020120904](https://blogimage.gisarmory.xyz/2020120904.png)
 
 
 
@@ -35,7 +35,7 @@
 
 ### 用法：
 
-我们将该方法封装成插件，引用插件后，只需简单的两步即可实现上述效果。
+我们将该方法封装成插件，引用插件后，只需简单的三步即可实现上述效果。
 
 第一步：初始化`popupLayoutLayer`。如需查看所有点位气泡，需将 `showAll` 参数设置为 `true`，默认为`false，点击查看气泡信息。
 
@@ -49,11 +49,17 @@
 
 `popupLayoutLayer.addMarker(marker, contentHTML)`
 
-如果为点击查看气泡，只需上面两步即可实现效果；若要展示所有气泡，还需下面一步，显示所有气泡。
+第三步：分为点击查看气泡和展示所有气泡两种情况
+
+1、点击查看气泡。添加点击事件，在点击事件中添加气泡
+
+`popupLayoutLayer.on('click', function(evt) {})`
+
+2、展示所有气泡
 
 `popupLayoutLayer.showPopup()`
 
-![202012040102](https://blogimage.gisarmory.xyz/202012040102.png)
+![2020120903](https://blogimage.gisarmory.xyz/2020120903.png)
 
 
 
