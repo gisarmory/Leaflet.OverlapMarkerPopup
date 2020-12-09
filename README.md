@@ -3,9 +3,9 @@
 
 ## 简介：
 
-在平时项目工作中，经常遇到这种需求，两个或者多个点位完全重合了，但就是想点击时同时看到这些个点位的信息。
+在平时工作中，经常遇到这种问题，两个或者多个点位完全重合了，鼠标无法点击到被遮盖的点位，从而无法查看其气泡信息。
 
-在此，我们从两个维度来解决此问题。
+今天我们从另外两个维度来讨论，如何解决此问题。
 
 
 
@@ -17,11 +17,15 @@
 
 第一步：初始化`popupListLayer` 
 
-`var popupListLayer = new L.popupListLayer().addTo(map)`。
+```js
+var popupListLayer = new L.popupListLayer().addTo(map)
+```
 
 第二步：将点位以及气泡内容传入`popupListLayer`
 
-`popupListLayer.addMarker(marker, contentHTML)`
+```js
+popupListLayer.addMarker(marker, contentHTML)
+```
 
 ![2020120904](https://blogimage.gisarmory.xyz/2020120904.png)
 
@@ -31,7 +35,7 @@
 
 此方案主要是借鉴在GIT上发现的`leaflet-tooltip-layout`这个插件。通过处理`L.tooltip()`位置关系，实现多气泡信息展示，同时尽可能避免气泡之间的遮盖。
 
-该方案支持**通过点击点位展示气泡**以及**同时展示所有点位气泡**。
+该方案支持**通过点击点位展示气泡**，以及**同时展示所有点位气泡**。
 
 ### 用法：
 
@@ -39,25 +43,33 @@
 
 第一步：初始化`popupLayoutLayer`。如需查看所有点位气泡，需将 `showAll` 参数设置为 `true`，默认为`false`，点击查看气泡信息。
 
-`var popupLayoutLayer = new L.popupLayoutLayer({`
+```js
+var popupLayoutLayer = new L.popupLayoutLayer({
 
-​	`showAll: true // true，显示所有气泡；默认为 false，通过点击查看气泡`，
+	showAll: true // true，显示所有气泡；默认为 false，通过点击查看气泡
 
-`}).addTo(map)`
+}).addTo(map)
+```
 
-第二步：将点位以及气泡内容传入popupLayoutLayer
+第二步：将点位以及气泡内容传入`popupLayoutLayer`
 
-`popupLayoutLayer.addMarker(marker, contentHTML)`
+```js
+popupLayoutLayer.addMarker(marker, contentHTML)
+```
 
 第三步：分为点击查看气泡和展示所有气泡两种情况
 
 1、点击查看气泡。添加点击事件，在点击事件中添加气泡
 
-`popupLayoutLayer.on('click', function(evt) {})`
+```js
+popupLayoutLayer.on('click', function(evt) {})
+```
 
 2、展示所有气泡，需将`showAll` 参数设置为 `true`
 
-`popupLayoutLayer.showPopup()`
+```js
+popupLayoutLayer.showPopup()
+```
 
 ![2020120903](https://blogimage.gisarmory.xyz/2020120903.png)
 
@@ -82,5 +94,5 @@
 
 ## 相关链接
 
-[Leaflet](https://leafletjs.com/index.html)、[Leaflet.Path.DashFlow](https://gitlab.com/IvanSanchez/Leaflet.Path.DashFlow)
+[Leaflet](https://leafletjs.com/index.html)、[leaflet-tooltip-layout](https://github.com/ZijingPeng/leaflet-tooltip-layout)
 
